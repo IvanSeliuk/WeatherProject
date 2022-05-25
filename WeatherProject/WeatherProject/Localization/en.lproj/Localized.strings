@@ -1,0 +1,31 @@
+/* 
+  Localized.strings
+  WeatherProject
+
+  Created by Иван Селюк on 31.03.22.
+  
+*/
+"textField.placeholder" = "Weather in your city";
+"tabBarItem.weather" = "Weather";
+"tabBarItem.news" = "News";
+"tabBarItem.map" = "Map";
+"mapLabel" = "MAP";
+"Weather" = "Weather  ";
+"Humidity" = "Humidity: ";
+"Pressure" = "Pressure: ";
+"TemperatureMax" = "Temperature max: ";
+"TemperatureMin" = "Temperature min: ";
+"FeelsLike" = "Feels like ";
+"Wind" = "Wind: ";
+"Visibility" = "Visibility: ";
+"Search" = "Search";
+"\nCity not found" = "\nCity not found";
+"Back" = "Back";
+"Show requests history" = "Show requests history";
+"City" = "City";
+"Remove All" = "Remove All";
+
+//"Your geolocation service is off" = "Your geolocation service is off";
+//"You want to turn it on?" = "You want to turn it on?";
+//"Settings" = "Settings";
+//"Cancel" = "Cancel";

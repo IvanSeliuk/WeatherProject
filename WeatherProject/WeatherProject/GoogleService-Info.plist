@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>735910927353-qotoperel1fkjcrvb6e2flg59hl4mgpq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.735910927353-qotoperel1fkjcrvb6e2flg59hl4mgpq</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBuxSGG-VqKwanbipoHPskUU2ir7uHPXdQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>735910927353</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>IvanSeliuk.com.WeatherProject</string>
+	<key>PROJECT_ID</key>
+	<string>weatherproject-346618</string>
+	<key>STORAGE_BUCKET</key>
+	<string>weatherproject-346618.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:735910927353:ios:febe99778a77d51b863b28</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-6134739576773256~3647641325</string>
+</dict>
+</plist>

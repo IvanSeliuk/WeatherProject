@@ -1,0 +1,11 @@
+/* 
+  Localized.strings
+  WeatherProject
+
+  Created by Иван Селюк on 31.03.22.
+  
+*/
+"textField.placeholder" = "Погода у твоєму місті";
+"tabBarItem.weather" = "Погода";
+"tabBarItem.news" = "Новості";
+"tabBarItem.map" = "Карта";

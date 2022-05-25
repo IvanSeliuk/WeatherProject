@@ -1,0 +1,31 @@
+/* 
+  Localized.strings
+  WeatherProject
+
+  Created by Иван Селюк on 31.03.22.
+  
+*/
+"textField.placeholder" = "Погода в твоём городе";
+"tabBarItem.weather" = "Погода";
+"tabBarItem.news" = "Новости";
+"tabBarItem.map" = "Карта";
+"mapLabel" = "КАРТА";
+"Weather" = "Погода  ";
+"Humidity" = "Влажность: ";
+"Pressure" = "Давление: ";
+"TemperatureMax" = "Мин. температура: ";
+"TemperatureMin" = "Макс. температура: ";
+"FeelsLike" = "Чувствуется как ";
+"Wind" = "Ветер: ";
+"Visibility" = "Видимость: ";
+"Search" = "Поиск";
+"\nCity not found" = "\nГород не найден";
+"Back" = "Назад";
+"Show requests history" = "Показать историю запросов";
+"City" = "Город";
+"Remove All" = "Удалить всё";
+
+//"Your geolocation service is off" = "У вас выключена служба геолокации";
+//"You want to turn it on?" = "Вы хотите включить ее?";
+//"Settings" = "Настройки";
+//"Cancel" = "Отмена";

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VdV-q0-mMs">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--News View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="NewsViewController" customModule="WeatherProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news" translatesAutoresizingMaskIntoConstraints="NO" id="EKJ-Kj-lQh">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3QZ-7a-fwP">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cam-01-WEl" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="6kE-E8-ZuS"/>
+                                    <constraint firstAttribute="height" constant="50" id="F4Z-AL-tES"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballRotateChase"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cam-01-WEl" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="5aY-uq-qdU"/>
+                            <constraint firstItem="EKJ-Kj-lQh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7HK-1q-vUa"/>
+                            <constraint firstItem="3QZ-7a-fwP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ArR-ES-z03"/>
+                            <constraint firstAttribute="bottom" secondItem="EKJ-Kj-lQh" secondAttribute="bottom" id="Gli-HA-CU3"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3QZ-7a-fwP" secondAttribute="trailing" id="KaV-oK-aAV"/>
+                            <constraint firstItem="3QZ-7a-fwP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Sfu-Y4-c9a"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="3QZ-7a-fwP" secondAttribute="bottom" id="WY2-47-feI"/>
+                            <constraint firstItem="cam-01-WEl" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="iDd-SH-EiQ"/>
+                            <constraint firstItem="EKJ-Kj-lQh" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="itE-CB-Man"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="EKJ-Kj-lQh" secondAttribute="trailing" id="l0l-Cf-xWp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Jm2-6T-lU4"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="cam-01-WEl" id="n7L-ms-M1y"/>
+                        <outlet property="tableView" destination="3QZ-7a-fwP" id="3DA-KL-off"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="926.08695652173924" y="49.553571428571423"/>
+        </scene>
+        <!--News-->
+        <scene sceneID="367-zU-qth">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VdV-q0-mMs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="News" id="Pji-Th-Qbc">
+                        <imageReference key="image" image="newspaper.fill" catalog="system" symbolScale="large" renderingMode="original"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KG3-K6-VYy">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="QsZ-QG-bWT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rfP-pg-DsB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="15.942028985507248" y="49.553571428571423"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="news" width="438" height="600"/>
+        <image name="newspaper.fill" catalog="system" width="128" height="111"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

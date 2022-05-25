@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Weather-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="ShowWeatherViewController" customModule="WeatherProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OxT-6v-3L6">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oaC-Lr-Kzw">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zm4-tp-D2D" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="33v-bU-sqS"/>
+                                    <constraint firstAttribute="width" constant="50" id="qnq-G2-Btr"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.86666667460000002" green="0.41568624970000001" blue="0.1647058874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballScaleMultiple"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zm4-tp-D2D" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="5Nh-e4-OpV"/>
+                            <constraint firstItem="Zm4-tp-D2D" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="BDD-W3-6Oa"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="OxT-6v-3L6" secondAttribute="trailing" id="Cbc-9Y-k1C"/>
+                            <constraint firstItem="oaC-Lr-Kzw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="MJE-Nu-D5q"/>
+                            <constraint firstAttribute="bottom" secondItem="OxT-6v-3L6" secondAttribute="bottom" id="ZMv-LT-Wll"/>
+                            <constraint firstItem="OxT-6v-3L6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ZP1-Gl-EO3"/>
+                            <constraint firstItem="OxT-6v-3L6" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="aeE-jW-4yd"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="oaC-Lr-Kzw" secondAttribute="bottom" id="lh9-0t-I5i"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="oaC-Lr-Kzw" secondAttribute="trailing" id="wfO-sQ-QTr"/>
+                            <constraint firstItem="oaC-Lr-Kzw" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="zQN-vp-9Jn"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Weather" image="cloud.sun.fill" catalog="system" selectedImage="cloud.sun.fill" id="uJt-aN-NKO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="activityIndicatorCustom" destination="Zm4-tp-D2D" id="e1k-2e-Ac3"/>
+                        <outlet property="tableView" destination="oaC-Lr-Kzw" id="MAf-7e-RuY"/>
+                        <outlet property="videoView" destination="OxT-6v-3L6" id="x59-KB-eBK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="191" y="46"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cloud.sun.fill" catalog="system" width="128" height="95"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

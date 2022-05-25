@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Weather-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="ShowHistoryRequestViewController" customModule="WeatherProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud3" translatesAutoresizingMaskIntoConstraints="NO" id="HUB-rt-Nlq">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Z7G-2q-v5z">
+                                <rect key="frame" x="105" y="44" width="204" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentControlAction:" destination="Y6W-OH-hqX" eventType="valueChanged" id="JJ4-sH-H0T"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5Q-sX-GUm">
+                                <rect key="frame" x="315" y="45" width="91" height="29"/>
+                                <color key="backgroundColor" red="1" green="0.40079633439549434" blue="0.36242885497525235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="SFMono-Bold" family="SF Mono" pointSize="14"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Remove All"/>
+                                <connections>
+                                    <action selector="removeAllDataBaseAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hfQ-fJ-dcd"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="3" estimatedSectionHeaderHeight="-1" sectionFooterHeight="3" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LFP-d7-1No">
+                                <rect key="frame" x="0.0" y="75" width="414" height="738"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HUB-rt-Nlq" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="1d4-fw-Rg5"/>
+                            <constraint firstItem="LFP-d7-1No" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3Nc-ID-a7k"/>
+                            <constraint firstItem="h5Q-sX-GUm" firstAttribute="leading" secondItem="Z7G-2q-v5z" secondAttribute="trailing" constant="6" id="767-af-AMz"/>
+                            <constraint firstItem="h5Q-sX-GUm" firstAttribute="centerY" secondItem="Z7G-2q-v5z" secondAttribute="centerY" id="944-Vv-8q6"/>
+                            <constraint firstAttribute="trailing" secondItem="HUB-rt-Nlq" secondAttribute="trailing" id="Dac-6T-y5A"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="h5Q-sX-GUm" secondAttribute="trailing" constant="8" id="SoH-iI-D4t"/>
+                            <constraint firstItem="LFP-d7-1No" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="bjh-zk-aOR"/>
+                            <constraint firstItem="LFP-d7-1No" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="cZ0-4G-evv"/>
+                            <constraint firstItem="LFP-d7-1No" firstAttribute="top" secondItem="Z7G-2q-v5z" secondAttribute="bottom" id="dwJ-LS-h91"/>
+                            <constraint firstItem="Z7G-2q-v5z" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="105" id="giK-wt-gCr"/>
+                            <constraint firstItem="Z7G-2q-v5z" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="poJ-C1-sS8"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Z7G-2q-v5z" secondAttribute="trailing" constant="105" id="toV-L9-XMS"/>
+                            <constraint firstAttribute="bottom" secondItem="HUB-rt-Nlq" secondAttribute="bottom" id="vRY-7M-DHk"/>
+                            <constraint firstItem="HUB-rt-Nlq" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="yh2-z9-Ypa"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Weather" image="cloud.sun.fill" catalog="system" selectedImage="cloud.sun.fill" id="e4s-So-cBE"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="removeAllButton" destination="h5Q-sX-GUm" id="S9P-KI-I2c"/>
+                        <outlet property="segmentControl" destination="Z7G-2q-v5z" id="cwn-G7-DWZ"/>
+                        <outlet property="tableView" destination="LFP-d7-1No" id="ddq-Lr-9oP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="24.637681159420293" y="53.571428571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cloud.sun.fill" catalog="system" width="32" height="32"/>
+        <image name="cloud3" width="640" height="960"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
