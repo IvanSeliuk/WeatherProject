@@ -49,6 +49,11 @@ class OpenNewsViewController: UIViewController {
         setupScrollView()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.popViewController(animated: true)
+    }
+    
     func dateFromApiString(_ evenDate: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_ENG")

@@ -197,6 +197,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6D0CA8BC283F733F00E49C13 /* AppleMap */ = {
+			isa = PBXGroup;
+			children = (
+				6D301E7127EDD4AD006F45CD /* MapViewController.swift */,
+				6D301E7327EDD4C3006F45CD /* MapViewController.storyboard */,
+			);
+			path = AppleMap;
+			sourceTree = "<group>";
+		};
 		6D15775B27EA014600828A0D = {
 			isa = PBXGroup;
 			children = (
@@ -326,8 +335,7 @@
 		6D301E7027EDD49C006F45CD /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				6D301E7127EDD4AD006F45CD /* MapViewController.swift */,
-				6D301E7327EDD4C3006F45CD /* MapViewController.storyboard */,
+				6D0CA8BC283F733F00E49C13 /* AppleMap */,
 				6DEE6CFE2800AB9D00551E79 /* GoogleMap */,
 			);
 			path = Map;

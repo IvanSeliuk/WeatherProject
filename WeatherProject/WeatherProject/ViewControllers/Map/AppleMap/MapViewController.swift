@@ -9,7 +9,6 @@ import UIKit
 import MapKit
 import Lottie
 import GoogleMobileAds
-import RxSwift
 import CoreLocation
 
 class MapViewController: UIViewController {
@@ -29,18 +28,14 @@ class MapViewController: UIViewController {
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var bannerView: GADBannerView!
     
-    let disposeBag = DisposeBag()
-    let subject = BehaviorSubject<CLLocationCoordinate2D>(value: CLLocationCoordinate2D())
-    
-    private let locationManager = CLLocationManager()
     var timer: Timer?
+    private let locationManager = CLLocationManager()
     private var menu: Welcome? {
         didSet {
             guard let menu = self.menu else { return }
             self.setupWeatherDate(with: menu)
             MediaManager.shared.playSoundPlayer(with: SoundsChoice.sms.rawValue)
-            MediaManager.shared.playVideoPlayer(with: CurrentWeatherVideo.setVideosBackground(by: menu.weather.first?.icon ?? ""),
-                                                view: videoView)
+            MediaManager.shared.playVideoPlayer(with: CurrentWeatherVideo.setVideosBackground(by: menu.weather.first?.icon ?? ""), view: videoView)
             showView.layer.masksToBounds = true
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) {
                 self.showView.alpha = 1
@@ -63,6 +58,11 @@ class MapViewController: UIViewController {
         showView.alpha = 0
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupAnimation()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         locationManager.stopUpdatingLocation()
@@ -78,7 +78,6 @@ class MapViewController: UIViewController {
     
     private func allSetup() {
         setupManager()
-        setupAnimation()
         setupMap()
         setupAds()
     }
@@ -114,7 +113,7 @@ class MapViewController: UIViewController {
             self?.menu = weatherData
         } onError: { [weak self] error in
             guard let error = error else { return }
-            self?.showAlert(with: error) 
+            self?.showAlert(with: error)
             MediaManager.shared.playSoundPlayer(with: SoundsChoice.alar.rawValue)
         }
     }
@@ -156,28 +155,11 @@ class MapViewController: UIViewController {
 }
 
 extension MapViewController: MKMapViewDelegate {
-    
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
         self.showView.alpha = 0
         timer?.invalidate()
         MediaManager.shared.clearSoundPlayer()
         MediaManager.shared.clearVideoPlayer()
-        
-        
-        
-//        subject
-//            .debounce(DispatchTimeInterval.seconds(2), scheduler: MainScheduler.instance)
-//            .subscribe(onNext: { value in
-//                print(value)
-//             //   self.getCoordCityData(lat: mapView.centerCoordinate.latitude, lon: mapView.centerCoordinate.longitude)
-//            }).disposed(by: disposeBag)
-//
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            self.subject.onNext(CLLocationCoordinate2D(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude))
-//         //   sleep(1)
-//        }
-        
-        
         timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { [self] _ in
             self.getCoordCityData(lat: mapView.centerCoordinate.latitude, lon: mapView.centerCoordinate.longitude)
         })
@@ -186,30 +168,14 @@ extension MapViewController: MKMapViewDelegate {
 
 extension MapViewController: GADBannerViewDelegate {
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-      print("bannerViewDidReceiveAd")
+        print("bannerViewDidReceiveAd")
         bannerView.alpha = 0
-          UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 1, animations: {
             bannerView.alpha = 1
-          })
+        })
     }
-
+    
     func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
-      print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+        print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
     }
-//
-//    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
-//      print("bannerViewDidRecordImpression")
-//    }
-//
-//    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
-//      print("bannerViewWillPresentScreen")
-//    }
-//
-//    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
-//      print("bannerViewWillDIsmissScreen")
-//    }
-//
-//    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
-//      print("bannerViewDidDismissScreen")
-//    }
 }
