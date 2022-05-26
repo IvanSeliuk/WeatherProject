@@ -295,7 +295,6 @@
 		6D301E6527EDD2CC006F45CD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				6DEE6CFE2800AB9D00551E79 /* GoogleMap */,
 				6D301E6627EDD3D9006F45CD /* MainTabBar */,
 				6D301E7527EDE0AE006F45CD /* Weather */,
 				6D301E6B27EDD453006F45CD /* News */,
@@ -329,6 +328,7 @@
 			children = (
 				6D301E7127EDD4AD006F45CD /* MapViewController.swift */,
 				6D301E7327EDD4C3006F45CD /* MapViewController.storyboard */,
+				6DEE6CFE2800AB9D00551E79 /* GoogleMap */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -757,6 +757,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;

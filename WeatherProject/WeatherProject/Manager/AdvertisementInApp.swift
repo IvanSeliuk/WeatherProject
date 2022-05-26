@@ -59,6 +59,7 @@ extension AdvertisementInApp: GADFullScreenContentDelegate {
 extension UIApplication {
     // function that lets you get topViewController of the app
     func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        
         if let navigationController = controller as? UINavigationController {
             return topViewController(controller: navigationController.visibleViewController)
         }
@@ -72,4 +73,10 @@ extension UIApplication {
         }
         return controller
     }
+    
+//    let keyWindow = UIApplication.shared.connectedScenes
+//            .filter({$0.activationState == .foregroundActive})
+//            .compactMap({$0 as? UIWindowScene})
+//            .first?.windows
+//            .filter({$0.isKeyWindow}).first
 }
