@@ -21,8 +21,6 @@ class ShowHistoryRequestViewController: UIViewController {
     var arrayMapOffline = BehaviorSubject<[WeatherDate]>(value: [])
 
     
-   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -43,60 +41,16 @@ class ShowHistoryRequestViewController: UIViewController {
                     self?.segmentControlAction() }
                 cell.selectionStyle = .none
         }.disposed(by: disposeBag)
-        
-        
-//        Observable
-//            .combineLatest(
-//                arrayMapOffline,
-//                arrayCityOffline
-//            )
-//            .map { (arrayCity, arrayMap) in
-//                arrayCity.count > 0 && arrayMap > 0
-//
-//            }
+
         removeAllButton
             .rx
             .tap
             .bind { MediaManager.shared.playSoundPlayer(with: SoundsChoice.delete.rawValue)
                 CoreDataManager.shared.clearDataBase()
-                self.arrayCityOffline.do(onNext: { value in
-                    print(value)
-                })
-                    self.arrayMapOffline.do(onNext: { value in
-                    print(value.count)
-                    })
                 self.removeAllButton.isHidden = true
                 self.tableView.reloadData()
             }.disposed(by: disposeBag)
-        
-        segmentControl
-            .rx
-            .selectedSegmentIndex
-            .subscribe(onNext: { index in
-                if index == 0 {
-                    self.arrayMapOffline.do(onNext: { value in
-                        print(value.count)
-                    })
-                    //    arrayMapOffline.value().removeAll()
-                    
-                    let source = CoreDataManager.shared.getSourceFromDB(by: SourceValue.map.rawValue)
-                        self.arrayMapOffline.onNext(source)
-                    
-                } else {
-                    
-                    self.arrayCityOffline.do(onNext: { value in
-                        print(value.count)
-                    })
-        //            arrayCityOffline
-        //                .value()
-        //                .removeAll()
-                    
-                    let city = CoreDataManager.shared.getSourceFromDB(by: SourceValue.city.rawValue)
-                        self.arrayCityOffline.onNext(city)
-                }
-                self.buttonIsHidden()
-            }).disposed(by: disposeBag)
-        
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,17 +74,10 @@ class ShowHistoryRequestViewController: UIViewController {
         tableView.rx
             .setDelegate(self)
             .disposed(by: disposeBag)
-        tableView.delegate = self
+        //tableView.delegate = self
          
         tableView.register(UINib(nibName: "WeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "WeatherTableViewCell")
         tableView.register(UINib(nibName: "HistoryWeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "HistoryWeatherTableViewCell")
-        
-        tableView
-            .rx
-            .itemSelected
-            .subscribe(onNext: { indexPath in
-                print(indexPath)
-            }).disposed(by: disposeBag)
 
     }
     
@@ -155,22 +102,24 @@ class ShowHistoryRequestViewController: UIViewController {
     
     func segmentControlAction() {
         if segmentControl.selectedSegmentIndex == 0 {
-            arrayMapOffline.do(onNext: { value in
-                print(value.count)
-            })
-            //                   afterNext: arrayMapOffline.value().removeAll()
+            
+            //                    arrayMapOffline.value().removeAll()
             
             let source = CoreDataManager.shared.getSourceFromDB(by: SourceValue.map.rawValue)
+//            arrayMapOffline.subscribe(onNext: { value in
+//                print(value)
+//            }).disposed(by: disposeBag)
             arrayMapOffline.onNext(source)
         } else {
-            arrayCityOffline.do(onNext: { value in
-                print(value.count)
-            })
+            
 //            arrayCityOffline
 //                .value()
 //                .removeAll()
             //removeAll()
             let city = CoreDataManager.shared.getSourceFromDB(by: SourceValue.city.rawValue)
+//            arrayCityOffline.subscribe(onNext: { value in
+//                print(value)
+//            }).disposed(by: disposeBag)
             arrayCityOffline.onNext(city)
         }
         buttonIsHidden()
