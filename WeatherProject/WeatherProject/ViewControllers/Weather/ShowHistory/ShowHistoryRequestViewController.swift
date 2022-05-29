@@ -19,38 +19,11 @@ class ShowHistoryRequestViewController: UIViewController {
     let disposeBag = DisposeBag()
     var arrayCityOffline = BehaviorSubject<[WeatherDate]>(value: [])
     var arrayMapOffline = BehaviorSubject<[WeatherDate]>(value: [])
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
-        arrayCityOffline
-            .bind(to: tableView.rx.items(cellIdentifier:"WeatherTableViewCell" , cellType: WeatherTableViewCell.self)) { index, model, cell in
-                cell.setupParametresWithCity(with: model)
-                cell.userClickRemoveRowInCity = { [weak self] in
-                    self?.segmentControlAction() }
-                cell.animationView.backgroundColor = UIColor(named: "ColorView")
-                cell.selectionStyle = .none
-        }.disposed(by: disposeBag)
-        
-        arrayMapOffline
-            .bind(to: tableView.rx.items(cellIdentifier:"HistoryWeatherTableViewCell" , cellType: HistoryWeatherTableViewCell.self)) { index, model, cell in
-                cell.setupParametresWithMap(with: model)
-                cell.userClickRemoveRowInMap = { [weak self] in
-                    self?.segmentControlAction() }
-                cell.selectionStyle = .none
-        }.disposed(by: disposeBag)
-
-        removeAllButton
-            .rx
-            .tap
-            .bind { MediaManager.shared.playSoundPlayer(with: SoundsChoice.delete.rawValue)
-                CoreDataManager.shared.clearDataBase()
-                self.removeAllButton.isHidden = true
-                self.tableView.reloadData()
-            }.disposed(by: disposeBag)
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,20 +38,39 @@ class ShowHistoryRequestViewController: UIViewController {
     }
     
     private func setupUI() {
+        setupTableView()
         setupButton()
         setupSegmentStyle()
-        setupTableView()
+        
     }
     
     private func setupTableView() {
-        tableView.rx
-            .setDelegate(self)
-            .disposed(by: disposeBag)
-        //tableView.delegate = self
-         
+        //        tableView.rx
+        //            .setDelegate(self)
+        //            .disposed(by: disposeBag)
+        tableView.delegate = nil
+        tableView.dataSource = nil
+        
         tableView.register(UINib(nibName: "WeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "WeatherTableViewCell")
         tableView.register(UINib(nibName: "HistoryWeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "HistoryWeatherTableViewCell")
-
+        
+        arrayCityOffline
+            .bind(to: tableView.rx.items(cellIdentifier:"WeatherTableViewCell" , cellType: WeatherTableViewCell.self)) { index, model, cell in
+                cell.setupParametresWithCity(with: model)
+                cell.userClickRemoveRowInCity = { [weak self] in
+                    self?.segmentControlAction() }
+                cell.animationView.backgroundColor = UIColor(named: "ColorView")
+                cell.selectionStyle = .none
+            }.disposed(by: disposeBag)
+        
+        arrayMapOffline
+            .bind(to: tableView.rx.items(cellIdentifier:"HistoryWeatherTableViewCell" , cellType: HistoryWeatherTableViewCell.self)) { index, model, cell in
+                cell.setupParametresWithMap(with: model)
+                cell.userClickRemoveRowInMap = { [weak self] in
+                    self?.segmentControlAction() }
+                cell.selectionStyle = .none
+            }.disposed(by: disposeBag)
+        
     }
     
     private func setupSegmentStyle() {
@@ -89,11 +81,20 @@ class ShowHistoryRequestViewController: UIViewController {
     private func setupButton() {
         removeAllButton.layer.cornerRadius = 7
         removeAllButton.setTitle("Remove All".localized, for: .normal)
+        
+        removeAllButton
+            .rx
+            .tap
+            .bind { MediaManager.shared.playSoundPlayer(with: SoundsChoice.delete.rawValue)
+                CoreDataManager.shared.clearDataBase()
+                self.removeAllButton.isHidden = true
+                self.tableView.reloadData()
+            }.disposed(by: disposeBag)
     }
     
     private func buttonIsHidden() {
         if try! arrayMapOffline.value().count == 0,
-            try! arrayCityOffline.value().count == 0 {
+           try! arrayCityOffline.value().count == 0 {
             removeAllButton.isHidden = true
         } else {
             removeAllButton.isHidden = false
@@ -106,38 +107,38 @@ class ShowHistoryRequestViewController: UIViewController {
             //                    arrayMapOffline.value().removeAll()
             
             let source = CoreDataManager.shared.getSourceFromDB(by: SourceValue.map.rawValue)
-//            arrayMapOffline.subscribe(onNext: { value in
-//                print(value)
-//            }).disposed(by: disposeBag)
+            //            arrayMapOffline.subscribe(onNext: { value in
+            //                print(value)
+            //            }).disposed(by: disposeBag)
             arrayMapOffline.onNext(source)
         } else {
             
-//            arrayCityOffline
-//                .value()
-//                .removeAll()
+            //            arrayCityOffline
+            //                .value()
+            //                .removeAll()
             //removeAll()
             let city = CoreDataManager.shared.getSourceFromDB(by: SourceValue.city.rawValue)
-//            arrayCityOffline.subscribe(onNext: { value in
-//                print(value)
-//            }).disposed(by: disposeBag)
+            //            arrayCityOffline.subscribe(onNext: { value in
+            //                print(value)
+            //            }).disposed(by: disposeBag)
             arrayCityOffline.onNext(city)
         }
         buttonIsHidden()
     }
     
     
-//    @IBAction func segmentControlAction(_ sender: Any) {
-//        segmentControlAction()
-//    }
+    //    @IBAction func segmentControlAction(_ sender: Any) {
+    //        segmentControlAction()
+    //    }
     
-//    @IBAction func removeAllDataBaseAction(_ sender: Any) {
-//        MediaManager.shared.playSoundPlayer(with: SoundsChoice.delete.rawValue)
-//        CoreDataManager.shared.clearDataBase()
-//        arrayMapOffline.removeAll()
-//        arrayCityOffline.removeAll()
-//        removeAllButton.isHidden = true
-//        tableView.reloadData()
-//    }
+    //    @IBAction func removeAllDataBaseAction(_ sender: Any) {
+    //        MediaManager.shared.playSoundPlayer(with: SoundsChoice.delete.rawValue)
+    //        CoreDataManager.shared.clearDataBase()
+    //        arrayMapOffline.removeAll()
+    //        arrayCityOffline.removeAll()
+    //        removeAllButton.isHidden = true
+    //        tableView.reloadData()
+    //    }
 }
 
 //extension ShowHistoryRequestViewController: UITableViewDataSource {
@@ -152,7 +153,7 @@ class ShowHistoryRequestViewController: UIViewController {
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return 1
 //    }
-    
+
 //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        switch segmentControl.selectedSegmentIndex {
 //        case 0:
@@ -187,7 +188,7 @@ extension ShowHistoryRequestViewController: UITableViewDelegate {
     }
     
     // MARK: отступы между TableViewCell (grouped, height header = 3, cell - через section, а не Row)
-     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return " "
     }
 }
