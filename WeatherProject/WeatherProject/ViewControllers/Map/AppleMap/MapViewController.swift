@@ -10,6 +10,7 @@ import MapKit
 import Lottie
 import GoogleMobileAds
 import CoreLocation
+import RxSwift
 
 class MapViewController: UIViewController {
     
@@ -28,7 +29,9 @@ class MapViewController: UIViewController {
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var bannerView: GADBannerView!
     
-    var timer: Timer?
+    let disposeBag = DisposeBag()
+    var subjectCoordinate: BehaviorSubject<CLLocationCoordinate2D>? = nil
+    
     private let locationManager = CLLocationManager()
     private var menu: Welcome? {
         didSet {
@@ -107,6 +110,14 @@ class MapViewController: UIViewController {
         bannerView.delegate = self
     }
     
+    private func dispatchTimeInterval() {
+        subjectCoordinate?
+            .debounce(DispatchTimeInterval.seconds(2), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { value in
+                self.getCoordCityData(lat: value.latitude, lon: value.longitude)
+            }).disposed(by: disposeBag)
+    }
+    
     private func getCoordCityData(lat: Double, lon: Double) {
         NetworkServiceManager.shared.getWeatherCoordCity(lat: lat, lon: lon) { [weak self] weatherData in
             CoreDataManager.shared.addWeatherToBaseData(by: weatherData, source: SourceValue.map.rawValue, date: Date())
@@ -157,12 +168,19 @@ class MapViewController: UIViewController {
 extension MapViewController: MKMapViewDelegate {
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
         self.showView.alpha = 0
-        timer?.invalidate()
         MediaManager.shared.clearSoundPlayer()
         MediaManager.shared.clearVideoPlayer()
-        timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { [self] _ in
-            self.getCoordCityData(lat: mapView.centerCoordinate.latitude, lon: mapView.centerCoordinate.longitude)
-        })
+        
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            let coordinates = CLLocationCoordinate2D(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+            if self.subjectCoordinate == nil {
+                self.subjectCoordinate = BehaviorSubject<CLLocationCoordinate2D>(value: coordinates)
+                self.dispatchTimeInterval()
+            } else {
+                self.subjectCoordinate?.onNext(coordinates)
+            }
+        }
     }
 }
 

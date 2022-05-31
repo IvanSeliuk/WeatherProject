@@ -91,7 +91,6 @@ class ShowHistoryRequestViewController: UIViewController {
                 self.removeAllButton.isHidden = true
                 self.tableView.reloadData()
             }.disposed(by: disposeBag)
-        
     }
     
     func setupSegmentControl() {
