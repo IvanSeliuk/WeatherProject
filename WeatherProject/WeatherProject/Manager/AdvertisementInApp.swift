@@ -44,15 +44,10 @@ extension AdvertisementInApp: GADFullScreenContentDelegate {
         print("Ad did fail to present full screen content.")
     }
     
-    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad will present full screen content.")
-    }
-    
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         timerInterstitial?.invalidate()
         startTimer()
         print("Ad did dismiss full screen content.")
-        
     }
 }
 
