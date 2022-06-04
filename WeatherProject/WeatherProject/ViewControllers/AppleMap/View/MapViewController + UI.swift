@@ -61,7 +61,6 @@ extension MapViewController {
     private func getCoordCityData(lat: Double, lon: Double) {
         NetworkServiceManager.shared.getWeatherCoordCity(lat: lat, lon: lon) { [weak self] weatherData in
             CoreDataManager.shared.addWeatherToBaseData(by: weatherData, source: SourceValue.map.rawValue, date: Date())
-            
             self?.menu = weatherData
         } onError: { [weak self] error in
             guard let error = error else { return }
