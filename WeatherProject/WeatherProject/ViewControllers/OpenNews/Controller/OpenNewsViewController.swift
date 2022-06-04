@@ -42,6 +42,7 @@ class OpenNewsViewController: UIViewController {
         }
     }
     
+    //MARK: - Life cicle VC
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let selectedNews = selectedNews else { return }
@@ -53,34 +54,9 @@ class OpenNewsViewController: UIViewController {
         super.viewDidDisappear(animated)
         navigationController?.popViewController(animated: true)
     }
-    
-    func dateFromApiString(_ evenDate: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_ENG")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        let stringDate = dateFormatter.date(from: evenDate)
-        dateFormatter.dateFormat = "d MMM yyyy, HH:mm"
-        return dateFormatter.string(from: stringDate ?? Date())
-    }
-    
-    func setupInformations(with selectedNews: Article) {
-        nameJournalLabel.text = selectedNews.source.name.rawValue
-        descriptionLabel.text = selectedNews.articleDescription
-        dateLabel.text = dateFromApiString(selectedNews.publishedAt)
-        authorLabel.text = "By \(selectedNews.author ?? "Anybody")"
-        contentLabel.text = selectedNews.content
-        FileServiceManager.shared.getImage(from: selectedNews.urlToImage) { [weak self] image in
-            self?.screenImageView.image = image
-            self?.backgroundView.image = image
-        }
-    }
-    
-    private func setupScrollView() {
-        scrollView.contentInset = currentState.getInsetsValues()
-        scrollView.delegate = self
-    }
 }
 
+//MARK: - ScrollViewDelegate
 extension OpenNewsViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var scale = abs(scrollView.contentOffset.y) / (UIScreen.main.bounds.height * 0.5)

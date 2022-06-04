@@ -36,39 +36,8 @@ class WeatherTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))
-        panGesture.delegate = self
-        containerView.addGestureRecognizer(panGesture)
+        setupPanGestureRecognizer()
         setupAnimation()
-    }
-    
-    @objc private func panGestureAction(_ sender: UIPanGestureRecognizer) {
-        switch sender.state {
-        case .began: break
-        case .changed:
-            let translation = sender.translation(in: containerView)
-            sender.setTranslation(.zero, in: containerView)
-            guard translation.x < 0 || containerView.frame.origin.x < 0 else { return }
-            containerView.frame.origin.x += translation.x
-        case .cancelled, .ended, .failed:
-            UIView.animate(withDuration: 0.3) { [weak self] in
-                guard let self = self else { return }
-                if self.containerView.frame.origin.x < -self.containerAction.bounds.width {
-                    self.containerView.frame.origin.x = -self.containerAction.bounds.width
-                } else {
-                    if self.containerView.frame.origin.x > 0 {
-                        self.containerView.frame.origin.x = 0
-                    } else {
-                        if abs(self.containerView.frame.origin.x) > (self.containerAction.bounds.width / 2) {
-                            self.containerView.frame.origin.x = -self.containerAction.bounds.width
-                        } else  {
-                            self.containerView.frame.origin.x = 0
-                        }
-                    }
-                }
-            }
-        default: break
-        }
     }
     
     private func setupAnimation() {
@@ -78,7 +47,7 @@ class WeatherTableViewCell: UITableViewCell {
         animationView.play()
     }
     
-    func setup(with menu: Welcome) {
+    func setupWeatherCell(with menu: Welcome) {
         cityLabel.text = "Weather".localized + "\(menu.name), " + "\(menu.sys.country)"
         temperatureLabel.text = "\(menu.main.temp.celsius)ºC"
         humidityLabel.text = "Humidity".localized + "\(menu.main.humidity) %"
@@ -127,6 +96,44 @@ class WeatherTableViewCell: UITableViewCell {
         MediaManager.shared.playSoundPlayer(with: SoundsChoice.delete.rawValue)
         CoreDataManager.shared.removeRowFromDB(by: dateRequest ?? Date())
         userClickRemoveRowInCity?()
+    }
+}
+
+//MARK: - PanGestureRecognizer
+extension WeatherTableViewCell {
+    private func setupPanGestureRecognizer() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))
+        panGesture.delegate = self
+        containerView.addGestureRecognizer(panGesture)
+    }
+    
+    @objc private func panGestureAction(_ sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .began: break
+        case .changed:
+            let translation = sender.translation(in: containerView)
+            sender.setTranslation(.zero, in: containerView)
+            guard translation.x < 0 || containerView.frame.origin.x < 0 else { return }
+            containerView.frame.origin.x += translation.x
+        case .cancelled, .ended, .failed:
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                guard let self = self else { return }
+                if self.containerView.frame.origin.x < -self.containerAction.bounds.width {
+                    self.containerView.frame.origin.x = -self.containerAction.bounds.width
+                } else {
+                    if self.containerView.frame.origin.x > 0 {
+                        self.containerView.frame.origin.x = 0
+                    } else {
+                        if abs(self.containerView.frame.origin.x) > (self.containerAction.bounds.width / 2) {
+                            self.containerView.frame.origin.x = -self.containerAction.bounds.width
+                        } else  {
+                            self.containerView.frame.origin.x = 0
+                        }
+                    }
+                }
+            }
+        default: break
+        }
     }
     
     override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {

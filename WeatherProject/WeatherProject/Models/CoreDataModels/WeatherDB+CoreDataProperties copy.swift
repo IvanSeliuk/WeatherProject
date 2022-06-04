@@ -46,8 +46,7 @@ extension WeatherDB {
     
     func getMappedWeather() -> WeatherDate {
         return (Welcome(coord: Coord(lon: lon, lat: lat),
-                       weather: [Weather(id: 0, main: "", weatherDescription: "", icon: icon ?? "")],
-                       base: "",
+                       weather: [Weather(main: "", weatherDescription: "", icon: icon ?? "")],
                        main: Main(temp: temp,
                                   feelsLike: feelsLike,
                                   tempMin: tempMin,
@@ -55,17 +54,9 @@ extension WeatherDB {
                                   pressure: Int(pressure),
                                   humidity: Int(humidity)),
                        visibility: Int(visibility),
-                       wind: Wind(speed: windSpeed,
-                                  deg: 0),
-                       clouds: Clouds(all: 0),
-                       dt: 0,
-                       sys: Sys(country: country ?? "",
-                                sunrise: 0,
-                                sunset: 0),
-                       timezone: 0,
-                       id: 0,
-                       name: name ?? "",
-                       cod: 0),
+                       wind: Wind(speed: windSpeed),
+                       sys: Sys(country: country ?? ""),
+                       name: name ?? ""),
                 getMappedData())
     }
     

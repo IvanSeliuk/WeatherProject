@@ -1,30 +1,15 @@
 //
-//  LoadingViewController.swift
+//  LoadingViewController + UI.swift
 //  WeatherProject
 //
-//  Created by Иван Селюк on 1.04.22.
+//  Created by Иван Селюк on 4.06.22.
 //
 
 import UIKit
 
-class LoadingViewController: UIViewController {
-    
-    @IBOutlet var viewLoading: UIView!
-    @IBOutlet weak var worldGifImage: UIImageView!
-    
-    var images: [UIImage] = []
-    
-    lazy var animationDuration = {
-        return Double(images.count) / 30.0
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        MediaManager.shared.playSoundPlayer(with: SoundsChoice.start2.rawValue)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+extension LoadingViewController {
+    //MARK: - RemoteConfig
+    func setupConnectRemoteConfig() {
         RCManager.shared.connect { [weak self] in
             DispatchQueue.main.async {
                 self?.setAnimation()
@@ -32,11 +17,8 @@ class LoadingViewController: UIViewController {
             }
         }
     }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        MediaManager.shared.clearSoundPlayer()
-    }
     
+    //MARK: - Animation
     private func setAnimation() {
         for i in 1...88 {
             if let image = UIImage(named: "\(i)") {
@@ -65,6 +47,6 @@ class LoadingViewController: UIViewController {
     completion: { _ in
         guard let mainTabBarViewController = MainTabBarViewController.getInstanceController else { return }
         self.navigationController?.viewControllers = [mainTabBarViewController]
-        }
+    }
     }
 }

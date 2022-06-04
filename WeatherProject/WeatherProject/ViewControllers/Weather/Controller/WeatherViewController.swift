@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import Lottie
 import GoogleMobileAds
+import Lottie
 
 class WeatherViewController: UIViewController {
     
@@ -16,10 +16,11 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var textFieldCity: UITextField!
     @IBOutlet weak var okButton: UIButton!
     
-    private var rewardedAd: GADRewardedAd?
+    var rewardedAd: GADRewardedAd?
     var isRewarded = false
     var cityText: String?
     
+    //MARK: - Life cicle VC
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -36,76 +37,19 @@ class WeatherViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        textFieldCity.text = nil
-        okButton.isEnabled = false
+        setupUIAfterDisappear()
         MediaManager.shared.clearSoundPlayer()
     }
     
-    private func setupAnimation() {
-        animationView.animation = Animation.named("clouds")
-        animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .loop
-        animationView.play()
-    }
-    
-    private func setupUI() {
-        okButton.isEnabled = false
-        okButton.layer.cornerRadius = 35
-        okButton.setTitle("Search".localized, for: .normal)
-        textFieldCity.delegate = self
-        showRequestsHistory.setTitle("Show requests history".localized, for: .normal)
-        showRequestsHistory.layer.cornerRadius = 20
-    }
-    
-    private func enabledHistoryButton() {
-        if CoreDataManager.shared.getSourceFromDB(by: SourceValue.map.rawValue).count > 0 || CoreDataManager.shared.getSourceFromDB(by: SourceValue.city.rawValue).count > 0 {
-            showRequestsHistory.isEnabled = true
-        } else {
-            showRequestsHistory.isEnabled = false
-        }
-    }
-    
-    private func localized() {
-        textFieldCity.placeholder = "textField.placeholder".localized
-    }
-    
-    private func setupAction() {
-        textFieldCity.addTarget(self, action: #selector(textFieldClick), for: .editingChanged)
-    }
-    
+    //MARK: - Action & push
     @objc func textFieldClick() {
         okButton.isEnabled = textFieldCity.text?.count ?? 0 > 0
     }
     
-    private func pushShowViewController() {
+    func pushShowViewController() {
         guard let vc = ShowWeatherViewController.getInstanceController as? ShowWeatherViewController else { return }
         self.navigationController?.pushViewController(vc, animated: true)
         vc.cityGetWeather = cityText
-    }
-    
-    //MARK: GoogleAds
-    func loadRewardedAd() {
-        view.showLoading()
-        let request = GADRequest()
-        GADRewardedAd.load(withAdUnitID:"ca-app-pub-3940256099942544/1712485313",
-                           request: request,
-                           completionHandler: { [self] ad, error in
-            if let error = error {
-                print("Failed to load rewarded ad with error: \(error.localizedDescription)")
-                view.closeLoading()
-                pushShowViewController()
-                AdvertisementInApp.shared.startTimer()
-                return
-            }
-            view.closeLoading()
-            ad?.present(fromRootViewController: self) {
-                self.isRewarded = true
-                print("Reward")
-            }
-            rewardedAd = ad
-            print("Rewarded ad loaded.")
-            rewardedAd?.fullScreenContentDelegate = self
-        })
     }
     
     @IBAction func showController(_ sender: Any) {
@@ -121,6 +65,7 @@ class WeatherViewController: UIViewController {
     }
 }
 
+//MARK: - TableViewDelegate
 extension WeatherViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -128,7 +73,7 @@ extension WeatherViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: Video Ads:
+//MARK: - GoodleAdsDelegate
 extension WeatherViewController: GADFullScreenContentDelegate {
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")

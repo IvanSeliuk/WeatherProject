@@ -1,41 +1,16 @@
 //
-//  ShowHistoryRequestViewController.swift
+//  ShowHistoryRequestViewController + UI.swift
 //  WeatherProject
 //
-//  Created by Иван Селюк on 17.04.22.
+//  Created by Иван Селюк on 4.06.22.
 //
 
 import UIKit
-import CoreData
 import RxSwift
 import RxCocoa
-import CoreMedia
 
-class ShowHistoryRequestViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var segmentControl: UISegmentedControl!
-    @IBOutlet weak var removeAllButton: UIButton!
-    
-    let disposeBag = DisposeBag()
-    var weatherDataSource = BehaviorSubject<[WeatherDate]>(value: [])
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupSegmentControl()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        navigationController?.popViewController(animated: true)
-        MediaManager.shared.clearSoundPlayer()
-    }
-    
-    private func setupUI() {
+extension ShowHistoryRequestViewController {
+    func setupUI() {
         setupTableView()
         setupButton()
         setupSegmentStyle()
@@ -46,7 +21,7 @@ class ShowHistoryRequestViewController: UIViewController {
             .rx
             .setDelegate(self)
             .disposed(by: disposeBag)
-      
+        
         tableView.register(UINib(nibName: "WeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "WeatherTableViewCell")
         tableView.register(UINib(nibName: "HistoryWeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "HistoryWeatherTableViewCell")
         
@@ -80,7 +55,7 @@ class ShowHistoryRequestViewController: UIViewController {
     private func setupButton() {
         removeAllButton.layer.cornerRadius = 7
         removeAllButton.setTitle("Remove All".localized, for: .normal)
-
+        
         removeAllButton
             .rx
             .tap
@@ -102,20 +77,5 @@ class ShowHistoryRequestViewController: UIViewController {
             weatherDataSource.onNext(city)
         }
         removeAllButton.isHidden = try! weatherDataSource.value().count == 0
-    }
-    
-    @IBAction func segmentControlAction(_ sender: Any) {
-        MediaManager.shared.playSoundPlayer(with: SoundsChoice.click.rawValue)
-        setupSegmentControl()
-    }
-}
-
-extension ShowHistoryRequestViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch segmentControl.selectedSegmentIndex {
-        case 0: return 87.0
-        case 1: return 218.0
-        default: return 44.0
-        }
     }
 }

@@ -30,10 +30,39 @@ class HistoryWeatherTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupPanGestureRecognizer()
+        setupAnimation()
+    }
+    
+    private func setupAnimation() {
+        animationView.animation = Animation.named("remove9")
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.play()
+    }
+    
+    func setupParametresWithMap(with parametres: WeatherDate) {
+        cityLabel.text = "Weather".localized + "\(parametres.welcome.name), " + "\(parametres.welcome.sys.country)"
+        temperatureLabel.text = "\(parametres.welcome.main.temp.celsius)ºC"
+        longitudeLabel.text = "\(parametres.welcome.coord.lon)"
+        latitudeLabel.text = "\(parametres.welcome.coord.lat)"
+        dateLabel.text = dateFormatted.string(from: parametres.date)
+        dateRequest = parametres.date
+    }
+    
+    @IBAction func removeRowAction(_ sender: Any) {
+        MediaManager.shared.playSoundPlayer(with: SoundsChoice.delete.rawValue)
+        CoreDataManager.shared.removeRowFromDB(by: dateRequest ?? Date())
+        userClickRemoveRowInMap?()
+    }
+}
+
+//MARK: - PanGestureRecognizer
+extension HistoryWeatherTableViewCell {
+    private func setupPanGestureRecognizer() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))
         panGesture.delegate = self
         containerView.addGestureRecognizer(panGesture)
-        setupAnimation()
     }
     
     @objc private func panGestureAction(_ sender: UIPanGestureRecognizer) {
@@ -65,28 +94,6 @@ class HistoryWeatherTableViewCell: UITableViewCell {
         }
     }
     
-    private func setupAnimation() {
-        animationView.animation = Animation.named("remove9")
-        animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .loop
-        animationView.play()
-    }
-    
-    @IBAction func removeRowAction(_ sender: Any) {
-        MediaManager.shared.playSoundPlayer(with: SoundsChoice.delete.rawValue)
-        CoreDataManager.shared.removeRowFromDB(by: dateRequest ?? Date())
-        userClickRemoveRowInMap?()
-    }
-    
-    func setupParametresWithMap(with parametres: WeatherDate) {
-        cityLabel.text = "Weather".localized + "\(parametres.welcome.name), " + "\(parametres.welcome.sys.country)"
-        temperatureLabel.text = "\(parametres.welcome.main.temp.celsius)ºC"
-        longitudeLabel.text = "\(parametres.welcome.coord.lon)"
-        latitudeLabel.text = "\(parametres.welcome.coord.lat)"
-        dateLabel.text = dateFormatted.string(from: parametres.date)
-        dateRequest = parametres.date
-    }
-   
     override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }

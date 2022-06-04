@@ -12,7 +12,6 @@ extension UIView {
         get {
             return false
         }
-        
         set {
             layer.borderWidth = newValue ? 2 : 0
             layer.borderColor = borderColor.cgColor
@@ -24,10 +23,8 @@ extension UIView {
             guard let color = layer.borderColor else {
                 return .clear
             }
-            
             return UIColor(cgColor: color)
         }
-        
         set {
             layer.borderColor = newValue.cgColor
         }

@@ -13,17 +13,17 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     var selectedIndex: Int?
-    private var news: News? {
+    var news: News? {
         didSet {
             tableView.reloadData()
         }
     }
-    
+    //MARK: - Life cicle VC
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = UIColor.black
         setupTableView()
         getDataNews()
-        navigationController?.navigationBar.tintColor = UIColor.black
         activityIndicator.startAnimating()
     }
     
@@ -31,26 +31,9 @@ class NewsViewController: UIViewController {
         super.viewDidDisappear(animated)
         MediaManager.shared.clearSoundPlayer()
     }
-    
-    func getDataNews() {
-        NetworkServiceManager.shared.getNews { [weak self] dataNews in
-            self?.news = dataNews
-            self?.activityIndicator.stopAnimating()
-        } onError: { [weak self] error in
-            guard let error = error else { return }
-            self?.activityIndicator.stopAnimating()
-            self?.showAlert(with: error)
-            MediaManager.shared.playSoundPlayer(with: SoundsChoice.alar.rawValue)
-        }
-    }
-    
-    func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsTableViewCell")
-    }
 }
 
+//MARK: - TableViewDelegate
 extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let news = news else { return 0 }
