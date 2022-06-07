@@ -77,7 +77,7 @@
 		6DAD60A8280F5262006192A4 /* remove2.json in Resources */ = {isa = PBXBuildFile; fileRef = 6DAD60A4280F5262006192A4 /* remove2.json */; };
 		6DAD60B5280F7CC2006192A4 /* remove9.json in Resources */ = {isa = PBXBuildFile; fileRef = 6DAD60B0280F7CC2006192A4 /* remove9.json */; };
 		6DAD60BB280F807C006192A4 /* remove12.json in Resources */ = {isa = PBXBuildFile; fileRef = 6DAD60B9280F807C006192A4 /* remove12.json */; };
-		6DAF83032846B0DE005E1921 /* keyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF83022846B0DE005E1921 /* keyWindow.swift */; };
+		6DAF83032846B0DE005E1921 /* UIAplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF83022846B0DE005E1921 /* UIAplication.swift */; };
 		6DC6A7772825AED4005E39B4 /* Rain.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6DC6A7762825AED4005E39B4 /* Rain.mp4 */; };
 		6DCF2817280C5E4A00F266A6 /* ShowHistoryRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF2816280C5E4A00F266A6 /* ShowHistoryRequestViewController.swift */; };
 		6DCF2819280C5E5300F266A6 /* ShowHistoryRequestViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DCF2818280C5E5300F266A6 /* ShowHistoryRequestViewController.storyboard */; };
@@ -167,7 +167,7 @@
 		6DAD60A4280F5262006192A4 /* remove2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = remove2.json; sourceTree = "<group>"; };
 		6DAD60B0280F7CC2006192A4 /* remove9.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = remove9.json; sourceTree = "<group>"; };
 		6DAD60B9280F807C006192A4 /* remove12.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = remove12.json; sourceTree = "<group>"; };
-		6DAF83022846B0DE005E1921 /* keyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyWindow.swift; sourceTree = "<group>"; };
+		6DAF83022846B0DE005E1921 /* UIAplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAplication.swift; sourceTree = "<group>"; };
 		6DC6A7762825AED4005E39B4 /* Rain.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rain.mp4; sourceTree = "<group>"; };
 		6DCF2816280C5E4A00F266A6 /* ShowHistoryRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHistoryRequestViewController.swift; sourceTree = "<group>"; };
 		6DCF2818280C5E5300F266A6 /* ShowHistoryRequestViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowHistoryRequestViewController.storyboard; sourceTree = "<group>"; };
@@ -218,8 +218,9 @@
 		6D0CA8BC283F733F00E49C13 /* AppleMap */ = {
 			isa = PBXGroup;
 			children = (
-				6D95424E284B6B52004F734D /* Controller */,
-				6D95424D284B6B4A004F734D /* View */,
+				6D301E7127EDD4AD006F45CD /* MapViewController.swift */,
+				6D301E7327EDD4C3006F45CD /* MapViewController.storyboard */,
+				6D954257284B71AE004F734D /* MapViewController + UI.swift */,
 			);
 			path = AppleMap;
 			sourceTree = "<group>";
@@ -267,8 +268,9 @@
 		6D15777D27EA040C00828A0D /* ShowDataWeather */ = {
 			isa = PBXGroup;
 			children = (
-				6D954245284B6553004F734D /* Controller */,
-				6D954246284B655D004F734D /* View */,
+				6D15778227EA07F500828A0D /* ShowWeatherViewController.swift */,
+				6D15778427EA07FF00828A0D /* ShowWeatherViewController.storyboard */,
+				6D954247284B6580004F734D /* ShowWeatherViewController + UI.swift */,
 			);
 			path = ShowDataWeather;
 			sourceTree = "<group>";
@@ -296,7 +298,7 @@
 				6D37003327F5FDFA00F0C32F /* Localized.swift */,
 				6D656A9427FF22D900D6964E /* Double + Degrees.swift */,
 				6D4865BA2833899C003D5763 /* UIView + CoreKit.swift */,
-				6DAF83022846B0DE005E1921 /* keyWindow.swift */,
+				6DAF83022846B0DE005E1921 /* UIAplication.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -348,8 +350,9 @@
 		6D301E6B27EDD453006F45CD /* News */ = {
 			isa = PBXGroup;
 			children = (
-				6D954250284B6C35004F734D /* Controller */,
-				6D95424F284B6C2E004F734D /* View */,
+				6D301E6C27EDD46F006F45CD /* NewsViewController.swift */,
+				6D301E6E27EDD481006F45CD /* NewsViewController.storyboard */,
+				6D954251284B6D71004F734D /* NewsViewController + UI.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -357,8 +360,9 @@
 		6D301E7527EDE0AE006F45CD /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				6D954240284B5C50004F734D /* Controller */,
-				6D954242284B5C6A004F734D /* View */,
+				6D301E7627EDE0EB006F45CD /* WeatherViewController.swift */,
+				6D301E7827EDE104006F45CD /* WeatherViewController.storyboard */,
+				6D954243284B5D2E004F734D /* WeatherViewController + UI.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -432,8 +436,9 @@
 		6D6B751A27F046DF004D8879 /* OpenNews */ = {
 			isa = PBXGroup;
 			children = (
-				6D954254284B6F56004F734D /* Controller */,
-				6D954253284B6F51004F734D /* View */,
+				6D6B751B27F04805004D8879 /* OpenNewsViewController.swift */,
+				6D6B751D27F04814004D8879 /* OpenNewsViewController.storyboard */,
+				6D954255284B6F79004F734D /* OpenNewsViewController + UI.swift */,
 			);
 			path = OpenNews;
 			sourceTree = "<group>";
@@ -447,147 +452,12 @@
 			path = JSONModels;
 			sourceTree = "<group>";
 		};
-		6D954240284B5C50004F734D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				6D301E7627EDE0EB006F45CD /* WeatherViewController.swift */,
-				6D301E7827EDE104006F45CD /* WeatherViewController.storyboard */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6D954242284B5C6A004F734D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6D954243284B5D2E004F734D /* WeatherViewController + UI.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6D954245284B6553004F734D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				6D15778227EA07F500828A0D /* ShowWeatherViewController.swift */,
-				6D15778427EA07FF00828A0D /* ShowWeatherViewController.storyboard */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6D954246284B655D004F734D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6D954247284B6580004F734D /* ShowWeatherViewController + UI.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6D954249284B6909004F734D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6D95424B284B6938004F734D /* ShowHistoryRequestViewController + UI.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6D95424A284B6911004F734D /* Controller */ = {
+		6DCF2815280C5E1100F266A6 /* ShowHistoryWeather */ = {
 			isa = PBXGroup;
 			children = (
 				6DCF2816280C5E4A00F266A6 /* ShowHistoryRequestViewController.swift */,
 				6DCF2818280C5E5300F266A6 /* ShowHistoryRequestViewController.storyboard */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6D95424D284B6B4A004F734D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6D954257284B71AE004F734D /* MapViewController + UI.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6D95424E284B6B52004F734D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				6D301E7127EDD4AD006F45CD /* MapViewController.swift */,
-				6D301E7327EDD4C3006F45CD /* MapViewController.storyboard */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6D95424F284B6C2E004F734D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6D954251284B6D71004F734D /* NewsViewController + UI.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6D954250284B6C35004F734D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				6D301E6C27EDD46F006F45CD /* NewsViewController.swift */,
-				6D301E6E27EDD481006F45CD /* NewsViewController.storyboard */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6D954253284B6F51004F734D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6D954255284B6F79004F734D /* OpenNewsViewController + UI.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6D954254284B6F56004F734D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				6D6B751B27F04805004D8879 /* OpenNewsViewController.swift */,
-				6D6B751D27F04814004D8879 /* OpenNewsViewController.storyboard */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6D954259284B7413004F734D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6D95425B284B7439004F734D /* GoogleMapViewController + UI.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6D95425A284B7419004F734D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				6DEE6CFF2800ABBD00551E79 /* GoogleMapViewController.swift */,
-				6DEE6D012800ABEC00551E79 /* GoogleMapViewController.storyboard */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6D95425D284B769F004F734D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6D95425F284B76C3004F734D /* LoadingViewController + UI.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6D95425E284B76A7004F734D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				6DFCD24727F67562001859B8 /* LoadingViewController.swift */,
-				6DFCD24927F67570001859B8 /* LoadingViewController.storyboard */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		6DCF2815280C5E1100F266A6 /* ShowHistoryWeather */ = {
-			isa = PBXGroup;
-			children = (
-				6D95424A284B6911004F734D /* Controller */,
-				6D954249284B6909004F734D /* View */,
+				6D95424B284B6938004F734D /* ShowHistoryRequestViewController + UI.swift */,
 			);
 			path = ShowHistoryWeather;
 			sourceTree = "<group>";
@@ -604,8 +474,9 @@
 		6DEE6CFE2800AB9D00551E79 /* GoogleMap */ = {
 			isa = PBXGroup;
 			children = (
-				6D95425A284B7419004F734D /* Controller */,
-				6D954259284B7413004F734D /* View */,
+				6DEE6CFF2800ABBD00551E79 /* GoogleMapViewController.swift */,
+				6DEE6D012800ABEC00551E79 /* GoogleMapViewController.storyboard */,
+				6D95425B284B7439004F734D /* GoogleMapViewController + UI.swift */,
 			);
 			path = GoogleMap;
 			sourceTree = "<group>";
@@ -622,8 +493,9 @@
 		6DFCD24627F6753F001859B8 /* Loading */ = {
 			isa = PBXGroup;
 			children = (
-				6D95425E284B76A7004F734D /* Controller */,
-				6D95425D284B769F004F734D /* View */,
+				6DFCD24727F67562001859B8 /* LoadingViewController.swift */,
+				6DFCD24927F67570001859B8 /* LoadingViewController.storyboard */,
+				6D95425F284B76C3004F734D /* LoadingViewController + UI.swift */,
 			);
 			path = Loading;
 			sourceTree = "<group>";
@@ -833,7 +705,7 @@
 				6DA0D09427F3BBDE00165771 /* UIView.swift in Sources */,
 				6D954256284B6F79004F734D /* OpenNewsViewController + UI.swift in Sources */,
 				6D15779C27EA273F00828A0D /* Weather.swift in Sources */,
-				6DAF83032846B0DE005E1921 /* keyWindow.swift in Sources */,
+				6DAF83032846B0DE005E1921 /* UIAplication.swift in Sources */,
 				6D15778C27EA08B300828A0D /* API.swift in Sources */,
 				6D15779627EA11A200828A0D /* UIStoryboard + CoreKit.swift in Sources */,
 				6D954252284B6D71004F734D /* NewsViewController + UI.swift in Sources */,

@@ -24,8 +24,8 @@
 "Show requests history" = "Show requests history";
 "City" = "City";
 "Remove All" = "Remove All";
-
-//"Your geolocation service is off" = "Your geolocation service is off";
-//"You want to turn it on?" = "You want to turn it on?";
-//"Settings" = "Settings";
-//"Cancel" = "Cancel";
+"Temperature:" = "Temperature:";
+"km" = "km";
+"hPa" = "hPa";
+"m/s" = "m/s";
+"en_ENG" = "en_ENG";

@@ -35,6 +35,8 @@ class CoreDataManager {
    
     func getSourceFromDB(by source: String) -> [WeatherDate] {
         let request = WeatherDB.fetchRequest(with: source)
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [sort]
         guard let parametersWeather = try? context.fetch(request) else { return []}
         return parametersWeather.map { $0.getMappedWeather()}
     }

@@ -73,11 +73,11 @@ extension MapViewController {
         cityLabel.text = "Weather".localized + "\(menu.name), " + "\(menu.sys.country)"
         temperatureLabel.text = "\(menu.main.temp.celsius)ºC"
         humidityLabel.text = "Humidity".localized + "\(menu.main.humidity) %"
-        pressureLabel.text = "Pressure".localized + "\(menu.main.pressure) hPa"
+        pressureLabel.text = "Pressure".localized + "\(menu.main.pressure)" + "hPa".localized
         tempMaxLabel.text = "TemperatureMax".localized + "\(menu.main.tempMax.celsius) ºC"
         tempMinLabel.text = "TemperatureMin".localized + "\(menu.main.tempMin.celsius) ºC"
-        windLabel.text = "Wind".localized + "\(menu.wind.speed) m/s"
-        visibilityLabel.text = "Visibility".localized + "\(menu.visibility) km"
+        windLabel.text = "Wind".localized + "\(menu.wind.speed) " + "m/s".localized
+        visibilityLabel.text = "Visibility".localized + "\(menu.visibility) " + "km".localized
         
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             if let posterUrl = API.icon.getIconUrl(by: menu.weather.first?.icon ?? ""),

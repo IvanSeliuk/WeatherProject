@@ -23,7 +23,7 @@ class HistoryWeatherTableViewCell: UITableViewCell {
     
     lazy var dateFormatted: DateFormatter = {
         let dateFormatted = DateFormatter()
-        dateFormatted.locale = Locale(identifier: "en_ENG")
+        dateFormatted.locale = Locale(identifier: "en_ENG".localized)
         dateFormatted.dateFormat = "d MMM yyyy, HH:mm:ss"
         return dateFormatted
     }()

@@ -24,8 +24,8 @@
 "Show requests history" = "Pokaż historię żądań";
 "City" = "Miasto";
 "Remove All" = "Usuń wszystko";
-
-//"Your geolocation service is off" = "Twoja usługa geolokacji jest wyłączona";
-//"You want to turn it on?" = "Czy chcesz go włączyć?";
-//"Settings" = "Ustawienie";
-//"Cancel" = "Anulowanie";
+"Temperature:" = "Temperature:";
+"km" = "km";
+"hPa" = "hPa";
+"m/s" = "m/s";
+"en_ENG" = "en_ENG";

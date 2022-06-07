@@ -86,7 +86,7 @@ class MapViewController: UIViewController {
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         annotation.title = menu?.name
-        annotation.subtitle = "Temperature: \(menu?.main.temp.celsius ?? 0)ºC"
+        annotation.subtitle = "Temperature:".localized + "\(menu?.main.temp.celsius ?? 0)ºC"
         mapView.addAnnotation(annotation)
     }
 }
@@ -98,15 +98,12 @@ extension MapViewController: MKMapViewDelegate {
         MediaManager.shared.clearSoundPlayer()
         MediaManager.shared.clearVideoPlayer()
         
-        DispatchQueue.global().async { [weak self] in
-            guard let self = self else { return }
-            let coordinates = CLLocationCoordinate2D(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-            if self.subjectCoordinate == nil {
-                self.subjectCoordinate = BehaviorSubject<CLLocationCoordinate2D>(value: coordinates)
-                self.dispatchTimeInterval()
-            } else {
-                self.subjectCoordinate?.onNext(coordinates)
-            }
+        let coordinates = CLLocationCoordinate2D(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        if self.subjectCoordinate == nil {
+            self.subjectCoordinate = BehaviorSubject<CLLocationCoordinate2D>(value: coordinates)
+            self.dispatchTimeInterval()
+        } else {
+            self.subjectCoordinate?.onNext(coordinates)
         }
     }
 }

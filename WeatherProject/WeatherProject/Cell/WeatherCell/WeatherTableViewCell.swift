@@ -29,7 +29,7 @@ class WeatherTableViewCell: UITableViewCell {
     
     lazy var dateFormatted: DateFormatter = {
         let dateFormatted = DateFormatter()
-        dateFormatted.locale = Locale(identifier: "en_ENG")
+        dateFormatted.locale = Locale(identifier: "en_ENG".localized)
         dateFormatted.dateFormat = "d MMM yyyy \nHH:mm:ss"
         return dateFormatted
     }()
@@ -51,12 +51,12 @@ class WeatherTableViewCell: UITableViewCell {
         cityLabel.text = "Weather".localized + "\(menu.name), " + "\(menu.sys.country)"
         temperatureLabel.text = "\(menu.main.temp.celsius)ºC"
         humidityLabel.text = "Humidity".localized + "\(menu.main.humidity) %"
-        pressureLabel.text = "Pressure".localized + "\(menu.main.pressure) hPa"
+        pressureLabel.text = "Pressure".localized + "\(menu.main.pressure) " + "hPa".localized
         tempMaxLabel.text = "TemperatureMax".localized + "\(menu.main.tempMax.celsius) ºC"
         tempMinLabel.text = "TemperatureMin".localized + "\(menu.main.tempMin.celsius) ºC"
         otherInformationLabel.text = "FeelsLike".localized + "\(menu.main.feelsLike.celsius) ºC"
-        windLabel.text = "Wind".localized + "\(menu.wind.speed) m/s"
-        visibilityLabel.text = "Visibility".localized + "\(menu.visibility) km"
+        windLabel.text = "Wind".localized + "\(menu.wind.speed) " + "m/s".localized
+        visibilityLabel.text = "Visibility".localized + "\(menu.visibility) " + "km".localized
         dateLabel.text = dateFormatted.string(from: Date())
         
         DispatchQueue.global().async { [weak self] in
@@ -74,12 +74,12 @@ class WeatherTableViewCell: UITableViewCell {
         temperatureLabel.text = "\(parametres.welcome.main.temp.celsius)ºC"
         dateLabel.text = dateFormatted.string(from: parametres.date)
         humidityLabel.text = "Humidity".localized + "\(parametres.welcome.main.humidity) %"
-        pressureLabel.text = "Pressure".localized + "\(parametres.welcome.main.pressure) hPa"
+        pressureLabel.text = "Pressure".localized + "\(parametres.welcome.main.pressure) " +  "hPa".localized
         tempMaxLabel.text = "TemperatureMax".localized + "\(parametres.welcome.main.tempMax.celsius) ºC"
         tempMinLabel.text = "TemperatureMin".localized + "\(parametres.welcome.main.tempMin.celsius) ºC"
         otherInformationLabel.text = "FeelsLike".localized + "\(parametres.welcome.main.feelsLike.celsius) ºC"
-        windLabel.text = "Wind".localized + "\(parametres.welcome.wind.speed) m/s"
-        visibilityLabel.text = "Visibility".localized + "\(parametres.welcome.visibility) km"
+        windLabel.text = "Wind".localized + "\(parametres.welcome.wind.speed) " + "m/s".localized
+        visibilityLabel.text = "Visibility".localized + "\(parametres.welcome.visibility)" + "km".localized
         dateRequest = parametres.date
         
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in

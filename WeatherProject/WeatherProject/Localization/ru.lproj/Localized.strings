@@ -24,8 +24,8 @@
 "Show requests history" = "Показать историю запросов";
 "City" = "Город";
 "Remove All" = "Удалить всё";
-
-//"Your geolocation service is off" = "У вас выключена служба геолокации";
-//"You want to turn it on?" = "Вы хотите включить ее?";
-//"Settings" = "Настройки";
-//"Cancel" = "Отмена";
+"Temperature:" = "Температура:";
+"km" = "км";
+"hPa" = "гПа";
+"m/s" = "м/с";
+"en_ENG" = "ru_Ru";

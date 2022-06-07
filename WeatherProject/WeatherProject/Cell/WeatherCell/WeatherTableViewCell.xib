@@ -118,19 +118,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHn-58-GIe">
-                                <rect key="frame" x="198" y="147.5" width="13" height="17.5"/>
+                                <rect key="frame" x="206" y="147.5" width="13" height="17.5"/>
                                 <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="15"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swq-mZ-4Rj">
-                                <rect key="frame" x="198" y="190.5" width="13" height="17.5"/>
+                                <rect key="frame" x="206" y="190.5" width="13" height="17.5"/>
                                 <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="15"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kh-u4-kEt">
-                                <rect key="frame" x="198" y="169" width="13" height="17.5"/>
+                                <rect key="frame" x="206" y="169" width="13" height="17.5"/>
                                 <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="15"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -159,7 +159,7 @@
                             <constraint firstItem="qcM-tF-xKJ" firstAttribute="top" secondItem="lIm-WZ-9fg" secondAttribute="bottom" constant="4" id="XNg-EA-IDV"/>
                             <constraint firstAttribute="trailing" secondItem="lIm-WZ-9fg" secondAttribute="trailing" constant="12" id="Z4r-HU-qzy"/>
                             <constraint firstItem="wnU-YK-K7w" firstAttribute="top" secondItem="AKg-of-ZJu" secondAttribute="top" id="aO1-1t-ym1"/>
-                            <constraint firstItem="mHn-58-GIe" firstAttribute="centerX" secondItem="AKg-of-ZJu" secondAttribute="centerX" multiplier="1.3" constant="-3.5999999999999943" id="ceG-a3-Ynl"/>
+                            <constraint firstItem="mHn-58-GIe" firstAttribute="centerX" secondItem="AKg-of-ZJu" secondAttribute="centerX" multiplier="1.35" constant="-3.5999999999999943" id="ceG-a3-Ynl"/>
                             <constraint firstItem="1kh-u4-kEt" firstAttribute="centerY" secondItem="XaY-lI-ArW" secondAttribute="centerY" id="dEL-Ig-Pty"/>
                             <constraint firstItem="lIm-WZ-9fg" firstAttribute="leading" secondItem="AKg-of-ZJu" secondAttribute="leading" constant="12" id="dlU-Zb-KRT"/>
                             <constraint firstItem="FVx-Wg-1ax" firstAttribute="centerY" secondItem="qcM-tF-xKJ" secondAttribute="centerY" id="hen-kL-TzC"/>

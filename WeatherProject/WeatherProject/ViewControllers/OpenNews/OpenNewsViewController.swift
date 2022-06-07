@@ -15,7 +15,7 @@ class OpenNewsViewController: UIViewController {
         func getInsetsValues() -> UIEdgeInsets {
             switch self {
             case .medium: return UIEdgeInsets(top: UIScreen.main.bounds.height * 0.5, left: 0.0, bottom: 0.0, right: 0.0)
-            case .small: return UIEdgeInsets(top: UIScreen.main.bounds.height * 0.71, left: 0.0, bottom: 0.0, right: 0.0)
+            case .small: return UIEdgeInsets(top: UIScreen.main.bounds.height * 0.70, left: 0.0, bottom: 0.0, right: 0.0)
             }
         }
     }
@@ -30,7 +30,7 @@ class OpenNewsViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIImageView!
     var selectedNews: Article?
     
-    private let minScaleScreenImageView: CGFloat = 0.7
+    private let minScaleScreenImageView: CGFloat = 0.6
     private let maxScaleScreenImageView: CGFloat = 1.2
     
     var currentState: StateScrollPosition = .medium {

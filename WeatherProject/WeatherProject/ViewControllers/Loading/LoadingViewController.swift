@@ -8,7 +8,6 @@
 import UIKit
 
 class LoadingViewController: UIViewController {
-    
     @IBOutlet var viewLoading: UIView!
     @IBOutlet weak var worldGifImage: UIImageView!
     
