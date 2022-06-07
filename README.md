@@ -8,8 +8,8 @@ Applied: UIKit, AVKit, MapKit, Xib, Networking, JSON, Localization, DateFormatte
 Working with files, Cocoapods(Alamofire, ActivityIndicator, GoogleMaps, lottie, ...), 
 Farebase(RemoteConfig, GoogleAds), CoreData, GCD, RxSwift(tableView, UIBatton), MVC.
 
-<img width="355" alt="LaunchScreen" src="https://user-images.githubusercontent.com/105222842/172442864-45cd18ed-8da6-43bd-a7ab-8212e93fda3a.png">
-<img width="355" alt="ShowWeatherScreen" src="https://user-images.githubusercontent.com/105222842/172442894-65a99f94-42ce-4d8d-b28a-8574db1164e9.png">
+<img width="355" alt="LaunchScreen" src="https://user-images.githubusercontent.com/105222842/172442864-45cd18ed-8da6-43bd-a7ab-8212e93fda3a.png"> <img width="355" alt="ShowWeatherScreen" src="https://user-images.githubusercontent.com/105222842/172442894-65a99f94-42ce-4d8d-b28a-8574db1164e9.png">
+
 <img width="341" alt="WeatherScreen" src="https://user-images.githubusercontent.com/105222842/172442908-28ab70ba-51d8-458d-a07a-de9851f3e0e8.png">
 <img width="350" alt="HistoryWeather" src="https://user-images.githubusercontent.com/105222842/172442841-fd984900-6f38-4469-b554-4fb6aa54fd77.png">
 <img width="354" alt="HistoryWeather2" src="https://user-images.githubusercontent.com/105222842/172442853-07996623-d7f9-416d-866b-360d2c4c381d.png">
