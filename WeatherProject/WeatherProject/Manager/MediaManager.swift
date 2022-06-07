@@ -24,7 +24,7 @@ enum FileFormat: String {
 }
 
 enum CurrentWeatherVideo: String {
-    case Sunny,
+    case Sunny1,
          SunnyCloudTop,
          Cloud,
          Cloud1,
@@ -37,7 +37,7 @@ enum CurrentWeatherVideo: String {
     
     static func setVideosBackground(by iconId: String) -> String {
         switch iconId {
-        case "01d": return CurrentWeatherVideo.Sunny.rawValue
+        case "01d": return CurrentWeatherVideo.Sunny1.rawValue
         case "02d": return CurrentWeatherVideo.SunnyCloudTop.rawValue
         case "01n", "02n": return CurrentWeatherVideo.Moon.rawValue
         case "03d", "03n": return CurrentWeatherVideo.Cloud.rawValue
