@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 extension ShowHistoryRequestViewController {
+    //MARK: - SetupUI
     func setupUI() {
         setupTableView()
         setupButton()

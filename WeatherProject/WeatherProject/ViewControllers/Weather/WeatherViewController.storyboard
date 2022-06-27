@@ -149,6 +149,9 @@
             <point key="canvasLocation" x="-4.3478260869565224" y="65.625"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="Pnd-aE-Val"/>
+    </designables>
     <resources>
         <image name="cloud" width="2116" height="912"/>
         <image name="cloud.sun.fill" catalog="system" width="128" height="95"/>

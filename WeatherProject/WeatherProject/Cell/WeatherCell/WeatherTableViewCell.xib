@@ -213,6 +213,9 @@
             <point key="canvasLocation" x="252.17391304347828" y="95.758928571428569"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="1Zf-Xy-9OK"/>
+    </designables>
     <resources>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
