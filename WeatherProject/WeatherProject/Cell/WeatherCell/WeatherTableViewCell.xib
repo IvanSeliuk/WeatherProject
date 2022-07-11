@@ -210,7 +210,7 @@
                 <outlet property="whatDayImage" destination="qcM-tF-xKJ" id="Ny0-ie-Yo6"/>
                 <outlet property="windLabel" destination="y8T-ka-W1Q" id="M3J-g8-r3V"/>
             </connections>
-            <point key="canvasLocation" x="252.17391304347828" y="95.758928571428569"/>
+            <point key="canvasLocation" x="307" y="86"/>
         </tableViewCell>
     </objects>
     <designables>
