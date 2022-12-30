@@ -33,7 +33,7 @@ class NewsViewController: UIViewController {
     }
 }
 
-//MARK: - TableViewDelegate
+//MARK: - TableViewDataSource
 extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let news = news else { return 0 }
@@ -49,6 +49,7 @@ extension NewsViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - TableViewDelegate
 extension NewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 174.0

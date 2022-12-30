@@ -54,7 +54,7 @@ class ShowWeatherViewController: UIViewController {
     }
 }
 
-//MARK: - TableViewDelegate
+//MARK: - TableViewDataSource
 extension ShowWeatherViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
@@ -80,6 +80,7 @@ extension ShowWeatherViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - TableViewDelegate
 extension ShowWeatherViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 218.0
